@@ -463,6 +463,9 @@ class QueryExecutor(object):
                 self.data_source.org, self.data_source,
                 self.query_hash, self.query, data,
                 run_time, utils.utcnow())
+#########################################[UPDATE]#########################################
+            models.db.session.commit()
+#########################################[UPDATE]#########################################
             self._log_progress('checking_alerts')
             for query_id in updated_query_ids:
                 check_alerts_for_query.delay(query_id)
